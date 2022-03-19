@@ -1,7 +1,6 @@
 #include "MemoryAssignment.hh"
 
 vector<uint16_t>* genBuffer() {
-    srand(time(NULL));
     vector<uint16_t>* buffer = new vector<uint16_t>(256);
     std::random_device rd;
     std::mt19937 gen(rd());
