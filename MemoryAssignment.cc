@@ -4,7 +4,7 @@ vector<uint16_t>* genBuffer() {
     vector<uint16_t>* buffer = new vector<uint16_t>(256);                       // initialise vector pointer with size 256
     random_device rd;                                                           // initialise random device
     mt19937 gen(rd());                                                          // make a generator using that random device
-    uniform_int_distribution<> distr(0, 255);                                   // make distribution between 0 and 255 (indices of vector)
+    uniform_int_distribution<> distr(0, 255);                                   // make distribution between 0 and 255 (indices of vector, that is range for a byte)
     for (uint16_t i = 0; i < 256; i++) {
         (*buffer)[i] = distr(gen);                                              // pick random number from distribution and store into array
     }
