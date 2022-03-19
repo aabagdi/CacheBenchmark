@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 vector<uint16_t>* genBuffer();
 
 double timeAccess(vector<uint16_t>* buff, uint64_t buffSize);

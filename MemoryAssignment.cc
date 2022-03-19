@@ -2,9 +2,9 @@
 
 vector<uint16_t>* genBuffer() {
     vector<uint16_t>* buffer = new vector<uint16_t>(256);
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distr(0, 255);
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distr(0, 255);
     for (uint16_t i = 0; i < 256; i++) {
         (*buffer)[i] = distr(gen);
     }
@@ -25,8 +25,8 @@ double timeAccess(vector<uint16_t>* buff, uint64_t buffSize) {
         nextIndex = (*buff)[nextIndex];
     }    
     clock_gettime(CLOCK_MONOTONIC, &stop);
-    double time_taken = (1E9 * (stop.tv_sec - start.tv_sec)) + (double)(stop.tv_nsec - start.tv_nsec);
-    double avgTime = time_taken/buffSize;
+    double time_taken = ((double)stop.tv_sec + 1.0e-9*stop.tv_nsec) - ((double)start.tv_sec + 1.0e-9*start.tv_nsec);
+    double avgTime = ((time_taken/(buffSize)) * 1e9) / 2;
     return avgTime;
 }
 
